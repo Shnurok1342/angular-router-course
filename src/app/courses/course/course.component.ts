@@ -1,30 +1,21 @@
 import {Component, OnInit} from '@angular/core';
 import {Course} from '../model/course';
-
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
-    selector: 'course',
+    selector: 'app-course',
     templateUrl: './course.component.html',
     styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
+  course: Course;
+  couponCode: string;
 
-    course: Course;
+  constructor(private route: ActivatedRoute) {}
 
-    couponCode: string;
-
-
-    constructor() {
-
-
-    }
-
-    ngOnInit() {
-
-
-    }
-
-
+  ngOnInit() {
+    this.course = this.route.snapshot.data['course'];
+  }
 }
 
 
