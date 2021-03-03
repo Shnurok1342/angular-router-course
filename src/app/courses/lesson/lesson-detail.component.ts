@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {LessonDetail} from '../model/lesson-detail';
 import {ActivatedRoute, Router} from '@angular/router';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-lesson',
@@ -8,7 +10,7 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./lesson-detail.component.css']
 })
 export class LessonDetailComponent implements OnInit {
-  lesson: LessonDetail;
+  lesson$: Observable<LessonDetail>;
 
   constructor(
     private route: ActivatedRoute,
@@ -16,7 +18,9 @@ export class LessonDetailComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.lesson = this.route.snapshot.data['lesson'];
+    this.lesson$ = this.route.data.pipe(
+      map(data => data['lesson'])
+    );
   }
 
   previous(lesson: LessonDetail) {
