@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LessonDetail} from '../model/lesson-detail';
-import {Observable} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-lesson',
@@ -11,10 +10,22 @@ import {ActivatedRoute} from '@angular/router';
 export class LessonDetailComponent implements OnInit {
   lesson: LessonDetail;
 
-  constructor(private route: ActivatedRoute) {
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit() {
     this.lesson = this.route.snapshot.data['lesson'];
+  }
+
+  previous(lesson: LessonDetail) {
+    this.router.navigate(['lessons', lesson.seqNo - 1],
+      { relativeTo: this.route.parent });
+  }
+
+  next(lesson: LessonDetail) {
+    this.router.navigate(['lessons', lesson.seqNo + 1],
+      { relativeTo: this.route.parent });
   }
 }
