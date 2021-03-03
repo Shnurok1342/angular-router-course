@@ -9,19 +9,11 @@ import {AuthStore} from './services/auth.store';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements  OnInit {
+  constructor(public auth: AuthStore) {}
 
-    constructor(public auth: AuthStore) {
-
-    }
-
-    ngOnInit() {
-
-
-    }
+  ngOnInit() {}
 
   logout() {
-        this.auth.logout();
-
+    this.auth.logout();
   }
-
 }
