@@ -26,7 +26,6 @@ import { ChatComponent } from './chat/chat.component';
     PageNotFoundComponent,
     LoginComponent,
     ChatComponent
-
   ],
   imports: [
     BrowserModule,
@@ -47,5 +46,4 @@ import { ChatComponent } from './chat/chat.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}
