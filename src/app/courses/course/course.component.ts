@@ -3,9 +3,9 @@ import {Course} from '../model/course';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
-    selector: 'app-course',
-    templateUrl: './course.component.html',
-    styleUrls: ['./course.component.css']
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css']
 })
 export class CourseComponent implements OnInit {
   course: Course;
@@ -15,6 +15,10 @@ export class CourseComponent implements OnInit {
 
   ngOnInit() {
     this.course = this.route.snapshot.data['course'];
+  }
+
+  confirmExit() {
+    return confirm(`Are you sure you want to exit ${this.course.description}`);
   }
 }
 
