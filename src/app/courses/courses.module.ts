@@ -33,7 +33,6 @@ import {ReactiveFormsModule} from '@angular/forms';
     LessonDetailComponent,
     CoursesCardListComponent,
     LessonsListComponent,
-
   ],
   imports: [
     CommonModule,
