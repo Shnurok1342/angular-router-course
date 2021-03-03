@@ -44,7 +44,14 @@ const routes: Routes = [
   imports: [
     RouterModule.forRoot(
       routes, {
-        preloadingStrategy: CustomPreloadingStrategy
+        preloadingStrategy: CustomPreloadingStrategy,
+        useHash: false,
+        scrollPositionRestoration: 'enabled',
+        paramsInheritanceStrategy: 'always',
+        relativeLinkResolution: 'corrected',
+        malformedUriErrorHandler:
+          (error, urlSerializer) =>
+            urlSerializer.parse('/page-not-found')
       }
     )
   ],
